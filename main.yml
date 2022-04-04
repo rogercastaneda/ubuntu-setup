@@ -1,0 +1,153 @@
+---
+- name: "Ubuntu setup"
+  hosts: localhost
+  connection: local
+  become: true
+  gather_facts: true
+  vars_files:
+    - vars/default.yml
+    
+  tasks:
+    - name: Update and upgrade apt packages
+      become: true
+      apt:
+        upgrade: yes
+        update_cache: yes
+
+    - name: Install prerequisites
+      apt: name={{ item }} update_cache=yes state=latest force_apt_get=yes
+      loop: ["aptitude"]
+
+    # https://www.digitalocean.com/community/tutorials/how-to-use-ansible-to-install-and-set-up-docker-on-ubuntu-18-04
+    - name: Install required system packages
+      apt: name={{ item }} state=latest update_cache=yes
+      loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'python3-pip', 'virtualenv', 'python3-setuptools']
+
+    - name: Install fonts-firacode and vim
+      apt: name={{ item }} state=latest update_cache=yes
+      loop: [ 'fonts-firacode', 'vim']
+
+    # - name: Add Docker GPG apt Key
+    #   apt_key:
+    #     url: https://download.docker.com/linux/ubuntu/gpg
+    #     state: present
+
+    # - name: Add Docker Repository
+    #   apt_repository:
+    #     repo: deb https://download.docker.com/linux/ubuntu bionic stable
+    #     state: present
+
+    # - name: Update apt and install docker-ce
+    #   apt: update_cache=yes name=docker-ce state=latest
+
+    # - name: Install Docker Module for Python
+    #   pip:
+    #     name: docker
+
+    - name: Install "spotify"
+      community.general.snap:
+        name: spotify
+
+    - name: Install "slack"
+      community.general.snap:
+        name: slack
+
+    - name: Install "zoom client"
+      community.general.snap:
+        name: zoom-client
+    
+    - name: Install "Lens"
+      community.general.snap:
+        name: kontena-lens
+        classic: yes
+
+    - name: Install "aws-cli"
+      community.general.snap:
+        name: aws-cli
+        classic: yes
+
+    - name: Install "aws eks"
+      community.general.snap:
+        name: eks
+        classic: yes
+        channel: latest/edge
+    
+    - name: Install "xmind"
+      community.general.snap:
+        name: xmind
+    
+    - name: Install "vscode"
+      community.general.snap:
+        name: code
+        classic: yes
+    
+    - name: Install "simplenote"
+      community.general.snap:
+        name: simplenote
+    
+    - name: Install "sftpclient"
+      community.general.snap:
+        name: sftpclient
+
+    - name: Install "joplin-desktop"
+      community.general.snap:
+        name: joplin-desktop
+
+    - name: Install "1password"
+      community.general.snap:
+        name: 1password
+
+    - name: Install "dbeaver-ce"
+      community.general.snap:
+        name: dbeaver-ce
+
+    - name: Install "vlc"
+      community.general.snap:
+        name: vlc
+
+    - name: Install "Transmission Remote GUI"
+      community.general.snap:
+        name: transgui-test
+
+    - name: Install "Signal"
+      community.general.snap:
+        name: signal-desktop
+
+    - name: Install "remmina desktop remote client"
+      community.general.snap:
+        name: remmina
+    
+    - name: Install "curl"
+      community.general.snap:
+        name: curl
+    
+    - name: Install "Beekeeper Studio - SQL Editor"
+      community.general.snap:
+        name: beekeeper-studio
+    
+    - name: Install "Postman"
+      community.general.snap:
+        name: postman
+    
+    - name: Install "Brave"
+      community.general.snap:
+        name: brave
+
+    # - import_role:
+    #     name: pandemonium1986.kubectx
+
+  roles:
+    - grzegorznowak.nvm_node
+    - baztian.jetbrains_toolbox
+    - deluxebrain.ansible_role_docker
+    - gantsign.oh-my-zsh
+      
+    # - darkwizard242.kubens
+    # - darkwizard242.packer
+    # - darkwizard242.vagrant
+    # - darkwizard242.docker
+    # - darkwizard242.dockercompose
+    
+    # - crivetimihai.virtualization.packer
+    # - crivetimihai.virtualization.vagrant
+    # - crivetimihai.virtualization.virtualbox

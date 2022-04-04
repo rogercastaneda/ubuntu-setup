@@ -1,0 +1,13 @@
+# deluxebrain.ansible_role_docker
+docker_users:
+  - roger
+
+oh_my_zsh_theme: af-magic
+oh_my_zsh_plugins:
+  - git
+  - terraform 
+  - docker 
+  - kubectl 
+  - kubectx
+users:
+  - username: roger
