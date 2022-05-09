@@ -71,6 +71,12 @@
         name: eks
         classic: yes
         channel: latest/edge
+
+    - name: Install "RunJS"
+      community.general.snap:
+        name: runjs
+        classic: yes
+        channel: latest/edge
     
     - name: Install "xmind"
       community.general.snap:
