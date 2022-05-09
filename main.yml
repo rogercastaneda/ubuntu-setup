@@ -139,6 +139,10 @@
       community.general.snap:
         name: brave
 
+    - name: Install "Barrier KVM"
+      community.general.snap:
+        name: barrier
+
     # - import_role:
     #     name: pandemonium1986.kubectx
 
