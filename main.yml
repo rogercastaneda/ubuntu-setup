@@ -139,6 +139,10 @@
       community.general.snap:
         name: brave
 
+    - name: Install "Firefox"
+      community.general.snap:
+        name: firefox
+
     - name: Install "Barrier KVM"
       community.general.snap:
         name: barrier
