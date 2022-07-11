@@ -2,9 +2,9 @@ roles:
   - src: grzegorznowak.nvm_node
     name: grzegorznowak.nvm_node
   - baztian.jetbrains_toolbox
-  - pandemonium1986.kubectl
-  - pandemonium1986.kubectx
-  - darkwizard242.kubens
+  # - pandemonium1986.kubectl
+  # - pandemonium1986.kubectx
+  # - darkwizard242.kubens
   - deluxebrain.ansible_role_docker
   - gantsign.oh-my-zsh
 
