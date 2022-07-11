@@ -4,7 +4,7 @@ roles:
   - baztian.jetbrains_toolbox
   # - pandemonium1986.kubectl
   # - pandemonium1986.kubectx
-  # - darkwizard242.kubens
+  - darkwizard242.terraform
   - deluxebrain.ansible_role_docker
   - gantsign.oh-my-zsh
 
