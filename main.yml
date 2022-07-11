@@ -129,6 +129,10 @@
       community.general.snap:
         name: barrier
 
+    - name: Install "Figma"
+      community.general.snap:
+        name: figma-linux
+
     - name: Install "MySQL Workbench Community"
       community.general.snap:
         name: mysql-workbench-community
