@@ -133,6 +133,10 @@
       community.general.snap:
         name: figma-linux
 
+    - name: Install "Microsoft Azure Storage Explorer"
+      community.general.snap:
+        name: storage-explorer
+
     - name: Install "MySQL Workbench Community"
       community.general.snap:
         name: mysql-workbench-community
