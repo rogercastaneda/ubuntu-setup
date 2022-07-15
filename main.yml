@@ -141,6 +141,10 @@
       community.general.snap:
         name: mysql-workbench-community
 
+    - name: Install "Peek"
+      community.general.snap:
+        name: peek
+
     - import_role:
         name: darkwizard242.terraform
     #     name: pandemonium1986.kubectx
