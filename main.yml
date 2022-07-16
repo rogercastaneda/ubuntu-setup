@@ -24,7 +24,7 @@
 
     - name: Install fonts-firacode and vim
       apt: name={{ item }} state=latest update_cache=yes
-      loop: [ 'fonts-firacode', 'vim']
+      loop: ['fonts-firacode', 'vim', 'filezilla']
 
     - name: Install "spotify"
       community.general.snap:
@@ -34,10 +34,6 @@
       community.general.snap:
         name: slack
 
-    - name: Install "zoom client"
-      community.general.snap:
-        name: zoom-client
-    
     - name: Install "Lens"
       community.general.snap:
         name: kontena-lens
@@ -144,6 +140,25 @@
     - name: Install "Peek"
       community.general.snap:
         name: peek
+    
+    - name: Run whoami without become.
+      command: whoami
+      changed_when: false
+      become: false
+      register: whoami
+
+    - name: Set a fact with the user name.
+      set_fact:
+        login_user: "{{ whoami.stdout }}"
+
+    - name: Download Zoom
+      become: false
+      get_url: 
+        url="https://zoom.us/client/latest/zoom_amd64.deb"
+        dest="/home/{{ login_user }}/Downloads/zoom_amd64.deb"
+    
+    - name: Install zoom
+      apt: deb="/home/{{ login_user }}/Downloads/zoom_amd64.deb"
 
     - import_role:
         name: darkwizard242.terraform
