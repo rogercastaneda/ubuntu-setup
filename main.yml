@@ -26,120 +26,7 @@
       apt: name={{ item }} state=latest update_cache=yes
       loop: ['fonts-firacode', 'vim', 'filezilla']
 
-    - name: Install "spotify"
-      community.general.snap:
-        name: spotify
-
-    - name: Install "slack"
-      community.general.snap:
-        name: slack
-
-    - name: Install "Lens"
-      community.general.snap:
-        name: kontena-lens
-        classic: yes
-
-    - name: Install "aws-cli"
-      community.general.snap:
-        name: aws-cli
-        classic: yes
-
-    - name: Install "aws eks"
-      community.general.snap:
-        name: eks
-        classic: yes
-        channel: latest/edge
-
-    - name: Install "RunJS"
-      community.general.snap:
-        name: runjs
-        classic: yes
-        channel: latest/edge
-    
-    - name: Install "xmind"
-      community.general.snap:
-        name: xmind
-    
-    - name: Install "vscode"
-      community.general.snap:
-        name: code
-        classic: yes
-    
-    - name: Install "simplenote"
-      community.general.snap:
-        name: simplenote
-    
-    - name: Install "sftpclient"
-      community.general.snap:
-        name: sftpclient
-
-    - name: Install "joplin-desktop"
-      community.general.snap:
-        name: joplin-desktop
-
-    - name: Install "1password"
-      community.general.snap:
-        name: 1password
-
-    - name: Install "dbeaver-ce"
-      community.general.snap:
-        name: dbeaver-ce
-
-    - name: Install "vlc"
-      community.general.snap:
-        name: vlc
-
-    - name: Install "Transmission Remote GUI"
-      community.general.snap:
-        name: transgui-test
-
-    - name: Install "Signal"
-      community.general.snap:
-        name: signal-desktop
-
-    - name: Install "remmina desktop remote client"
-      community.general.snap:
-        name: remmina
-    
-    - name: Install "curl"
-      community.general.snap:
-        name: curl
-    
-    - name: Install "Beekeeper Studio - SQL Editor"
-      community.general.snap:
-        name: beekeeper-studio
-    
-    - name: Install "Postman"
-      community.general.snap:
-        name: postman
-    
-    - name: Install "Brave"
-      community.general.snap:
-        name: brave
-
-    - name: Install "Firefox"
-      community.general.snap:
-        name: firefox
-
-    - name: Install "Barrier KVM"
-      community.general.snap:
-        name: barrier
-
-    - name: Install "Figma"
-      community.general.snap:
-        name: figma-linux
-
-    - name: Install "Microsoft Azure Storage Explorer"
-      community.general.snap:
-        name: storage-explorer
-
-    - name: Install "MySQL Workbench Community"
-      community.general.snap:
-        name: mysql-workbench-community
-
-    - name: Install "Peek"
-      community.general.snap:
-        name: peek
+    - import_tasks: snap_tasks.yml
     
     - name: Run whoami without become.
       command: whoami
@@ -151,31 +38,19 @@
       set_fact:
         login_user: "{{ whoami.stdout }}"
 
-    - name: Download Zoom
-      become: false
-      get_url: 
-        url="https://zoom.us/client/latest/zoom_amd64.deb"
-        dest="/home/{{ login_user }}/Downloads/zoom_amd64.deb"
-    
-    - name: Install zoom
-      apt: deb="/home/{{ login_user }}/Downloads/zoom_amd64.deb"
+    - import_tasks: zoom_tasks.yml 
+      vars:
+        login_user: "{{ login_user }}"
 
     - import_role:
         name: darkwizard242.terraform
-    #     name: pandemonium1986.kubectx
-
-  roles:
-    - grzegorznowak.nvm_node
-    - baztian.jetbrains_toolbox
-    - deluxebrain.ansible_role_docker
-    - gantsign.oh-my-zsh
-      
-    # - darkwizard242.kubens
-    # - darkwizard242.packer
-    # - darkwizard242.vagrant
-    # - darkwizard242.docker
-    # - darkwizard242.dockercompose
-    
-    # - crivetimihai.virtualization.packer
-    # - crivetimihai.virtualization.vagrant
-    # - crivetimihai.virtualization.virtualbox
+    - import_role:
+        name: darkwizard242.packer
+    - import_role:
+        name: darkwizard242.azurecli
+    - import_role:
+        name: darkwizard242.vagrant
+    - import_role:
+        name: darkwizard242.kubens
+    - import_role:
+        name: pandemonium1986.kubectl

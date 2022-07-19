@@ -11,3 +11,5 @@ oh_my_zsh_plugins:
   - kubectx
 users:
   - username: roger
+    
+nvm_node_version: "16.9.1"

@@ -2,12 +2,16 @@ roles:
   - src: grzegorznowak.nvm_node
     name: grzegorznowak.nvm_node
   - baztian.jetbrains_toolbox
-  # - pandemonium1986.kubectl
-  # - pandemonium1986.kubectx
   - darkwizard242.terraform
+  - darkwizard242.packer
+  - darkwizard242.vagrant
+  - darkwizard242.azurecli
+  - darkwizard242.kubens
+  - pandemonium1986.kubectl
   - deluxebrain.ansible_role_docker
   - gantsign.oh-my-zsh
+  # - pandemonium1986.kubectx
 
-collections:
-  - buluma.virtualization
+# collections:
+#   - azure.azcollection
   # - name: community.docker

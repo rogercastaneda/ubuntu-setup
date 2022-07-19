@@ -1,0 +1,8 @@
+- name: Download Zoom
+  become: false
+  get_url: 
+    url="https://zoom.us/client/latest/zoom_amd64.deb"
+    dest="/home/{{ login_user }}/Downloads/zoom_amd64.deb"
+
+- name: Install zoom
+  apt: deb="/home/{{ login_user }}/Downloads/zoom_amd64.deb"
