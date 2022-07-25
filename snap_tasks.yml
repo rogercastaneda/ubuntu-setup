@@ -113,3 +113,4 @@
 - name: Install "Peek"
   community.general.snap:
     name: peek
+

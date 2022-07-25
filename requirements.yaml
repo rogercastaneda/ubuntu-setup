@@ -1,6 +1,4 @@
 roles:
-  - src: grzegorznowak.nvm_node
-    name: grzegorznowak.nvm_node
   - baztian.jetbrains_toolbox
   - darkwizard242.terraform
   - darkwizard242.packer
@@ -10,7 +8,11 @@ roles:
   - pandemonium1986.kubectl
   - deluxebrain.ansible_role_docker
   - gantsign.oh-my-zsh
+  - grzegorznowak.nvm_node
   # - pandemonium1986.kubectx
+  # - src: grzegorznowak.nvm_node
+    # name: grzegorznowak.nvm_node
+  
 
 # collections:
 #   - azure.azcollection

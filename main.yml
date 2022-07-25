@@ -24,7 +24,7 @@
 
     - name: Install fonts-firacode and vim
       apt: name={{ item }} state=latest update_cache=yes
-      loop: ['fonts-firacode', 'vim', 'filezilla']
+      loop: ['fonts-firacode', 'vim', 'filezilla', 'freetuxtv']
 
     - import_tasks: snap_tasks.yml
     
@@ -54,3 +54,5 @@
         name: darkwizard242.kubens
     - import_role:
         name: pandemonium1986.kubectl
+    - import_role:
+        name: grzegorznowak.nvm_node

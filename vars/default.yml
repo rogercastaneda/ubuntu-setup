@@ -13,3 +13,7 @@ users:
   - username: roger
     
 nvm_node_version: "16.9.1"
+nvm_user_name: "roger"
+nvm_install_globally:
+  - yarn
+  - typescript
