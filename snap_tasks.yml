@@ -1,11 +1,17 @@
 ---
-- name: Install "spotify"
-  community.general.snap:
-    name: spotify
+# - name: Install "spotify"
+#   community.general.snap:
+#     name: spotify
+#     state: absent
 
 - name: Install "slack"
   community.general.snap:
     name: slack
+
+- name: Install "ngrok"
+  community.general.snap:
+    name: ngrok
+    state: absent
 
 - name: Install "Lens"
   community.general.snap:
@@ -23,11 +29,12 @@
     classic: yes
     channel: latest/edge
 
-- name: Install "RunJS"
-  community.general.snap:
-    name: runjs
-    classic: yes
-    channel: latest/edge
+# - name: Install "RunJS"
+#   community.general.snap:
+#     name: runjs
+#     classic: yes
+#     channel: latest/edge
+#     state: absent
 
 - name: Install "xmind"
   community.general.snap:

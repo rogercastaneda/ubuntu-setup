@@ -17,3 +17,4 @@ nvm_user_name: "roger"
 nvm_install_globally:
   - yarn
   - typescript
+  - serverless
